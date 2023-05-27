@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Service;
 
 import com.cp.retry.shared.dto.UserCredentials;
+import com.cp.retry.shared.repository.UserRepository;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -28,12 +29,15 @@ public class AuthenticationService {
     @Value("${jwt.service.ttl}")
     private long JWT_EXPIRATION;
     private static final String REDIS_PREFIX = "auth:";
+    
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
     public Object login(UserCredentials userCredentials) {
-        String username = ""; //Get User
+        String username = "";
         String rol = ""; //Get Rol
         List<String> roles = Collections.singletonList(rol);
         String token = generateJwtToken(username, roles);
