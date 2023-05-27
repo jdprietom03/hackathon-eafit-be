@@ -1,0 +1,23 @@
+version: '3'
+services:
+  # redis-stack:
+  #   image: redis
+  #   networks:
+  #     - my-network
+  #   ports:
+  #   - 6379:6379
+
+  retry:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # networks:
+    #   - my-network
+    ports:
+    - 80:80
+    - 6379:6379
+
+# networks:
+#   my-network:
+#     driver: bridge
+ 
