@@ -9,6 +9,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Service;
+
+import com.cp.retry.shared.dto.UserCredentials;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -29,7 +32,7 @@ public class AuthenticationService {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
-    public Object login(Object userCredentials) {
+    public Object login(UserCredentials userCredentials) {
         String username = ""; //Get User
         String rol = ""; //Get Rol
         List<String> roles = Collections.singletonList(rol);

@@ -23,7 +23,7 @@ public class WebSecurityConfig {
 		.cors().and()
 		.csrf().disable()
 		.authorizeHttpRequests()
-		.requestMatchers("**").permitAll()
+		.requestMatchers("/auth/login").permitAll()
 		.requestMatchers("**")
 		.hasAnyAuthority("###")
 		.and()
